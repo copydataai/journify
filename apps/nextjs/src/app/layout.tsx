@@ -15,21 +15,21 @@ import { env } from "~/env";
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"
-      ? "https://turbo.t3.gg"
+      ? "https://brotherhood.copydataai.com"
       : "http://localhost:3000",
   ),
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "Brotherhood's Journal",
+  description: "A customized jounal for the Brotherhood",
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
+    title: "Brotherhood's Journal",
+    description: "The way to squeeze your journals",
+    url: "https://brotherhood.copydataai.com",
+    siteName: "Brotherhood's Journal",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
+    site: "@copydataaireal",
+    creator: "@copydataaireal",
   },
 };
 
