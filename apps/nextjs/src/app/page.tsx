@@ -1,44 +1,28 @@
-import { Suspense } from "react";
+"use server";
 
-import { api, HydrateClient } from "~/trpc/server";
-import { AuthShowcase } from "./_components/auth-showcase";
-import {
-  CreatePostForm,
-  PostCardSkeleton,
-  PostList,
-} from "./_components/posts";
+import { Button } from "@acme/ui/button";
+import { Card, CardContent } from "@acme/ui/card";
 
-export const runtime = "edge";
+import { Editor } from "~/app/_components/Editor";
 
-export default function HomePage() {
-  // You can await this here if you don't want to show Suspense fallback below
-  void api.post.all.prefetch();
-
+export default async function HomePage() {
   return (
-    <HydrateClient>
-      <main className="container h-screen py-16">
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-primary">T3</span> Turbo
-          </h1>
-          <AuthShowcase />
+    <main className="container h-screen py-16">
+      <div className="flex flex-col items-center justify-center gap-4">
+        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+          Brotherhood
+        </h1>
+        <img src="/brotherhood-profile.webp" alt="brotherhood logo" />
 
-          <CreatePostForm />
-          <div className="w-full max-w-2xl overflow-y-scroll">
-            <Suspense
-              fallback={
-                <div className="flex w-full flex-col gap-4">
-                  <PostCardSkeleton />
-                  <PostCardSkeleton />
-                  <PostCardSkeleton />
-                </div>
-              }
-            >
-              <PostList />
-            </Suspense>
-          </div>
+        <div className="flex w-full max-w-2xl flex-col items-center justify-center overflow-y-scroll">
+          <Button variant="primary">define who you are</Button>
+          <Card className="w-[350px]">
+            <CardContent>
+              <Editor />
+            </CardContent>
+          </Card>
         </div>
-      </main>
-    </HydrateClient>
+      </div>
+    </main>
   );
 }
